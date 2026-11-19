@@ -1,3 +1,6 @@
+// Built in this session: Vice City Cover Studio — a multi-panel GTA-style poster maker
+// (three poster sizes, three layouts per size, up to three photos, per-panel crop/zoom,
+// colour grades and bold caption lettering), replacing the starter's one-photo Cover Snap.
 // A working gta6-cover-art-01 entry (Node 22, standard library only): the app is this directory's app/ folder, plain
 // static files a desktop browser loads offline (app/index.html and its ES modules, no library and no network
 // request), and the program hands it in. It copies app/ and screenshots/ from beside this file to /output and writes

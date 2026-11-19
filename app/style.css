@@ -1,12 +1,44 @@
-html, body { margin: 0; height: 100%; background: #f2f0f4; color: #1d1b22; font: 15px/1.4 system-ui, sans-serif; }
-.app { display: flex; gap: 32px; align-items: center; justify-content: center; height: 100%; padding: 24px; box-sizing: border-box; }
-.controls { display: flex; flex-direction: column; gap: 14px; width: 280px; }
-.controls h1 { margin: 0; font-size: 28px; }
-.controls p { margin: 0; color: #5c5866; }
-label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; }
-input[type=text] { font: inherit; padding: 8px; border: 1px solid #c9c4d1; border-radius: 6px; }
-button { font: inherit; font-weight: 700; padding: 10px; border: 0; border-radius: 6px; background: #1d1b22; color: #fff; cursor: pointer; }
-canvas { width: min(70vh, 60vw); height: min(70vh, 60vw); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
-body.shot-cover .controls { display: none; }
-body.shot-cover .app { padding: 0; }
-body.shot-cover canvas { width: 100vw; height: 100vh; box-shadow: none; }
+/* Vice City Cover Studio — dark neon editor chrome around the poster preview. */
+html, body { margin: 0; min-height: 100%; background: #12081f; color: #f5eefc; font: 15px/1.45 system-ui, sans-serif; }
+.app { display: flex; gap: 28px; align-items: flex-start; justify-content: center; padding: 22px; box-sizing: border-box; }
+.controls { display: flex; flex-direction: column; gap: 14px; width: 330px; flex-shrink: 0; }
+.controls h1 {
+  margin: 0; font-size: 30px; line-height: 0.95; letter-spacing: 0.5px; font-weight: 900;
+  background: linear-gradient(180deg, #ffe259 0%, #ff7e5f 55%, #ff2e88 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.tagline { margin: 0; color: #c9b3dd; font-size: 13px; }
+.group { display: flex; flex-direction: column; gap: 10px; background: #1e0f33; border: 1px solid #3a2358; border-radius: 12px; padding: 14px; }
+.group-title { font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #ff8ac2; }
+.hint { margin: 0; color: #a98fc4; font-size: 12px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
+input[type=text], select { font: inherit; padding: 9px; border: 1px solid #4a2f6e; border-radius: 8px; background: #160a26; color: #fff; }
+input[type=range] { accent-color: #ff2e88; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.row label { flex: 1; min-width: 120px; }
+button { font: inherit; font-weight: 700; padding: 9px 12px; border: 0; border-radius: 8px; background: #2c1747; color: #ffe9f5; cursor: pointer; }
+button:hover { background: #3d2160; }
+.pill { font-size: 13px; padding: 8px 10px; }
+.pill.active { background: #ff2e88; color: #fff; }
+.pill.layout-active { background: #ff7e5f; color: #1d0b26; }
+.photo-row { display: flex; gap: 8px; }
+.photo-slot { flex: 1; font-size: 12px; }
+.photo-slot input { display: none; }
+.thumb {
+  display: block; margin-top: 4px; height: 56px; border: 2px dashed #5b3a86; border-radius: 8px;
+  background-size: cover; background-position: center; color: #c9b3dd; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden;
+}
+.thumb.loaded { border-style: solid; border-color: #ff2e88; color: transparent; }
+.thumb.selected { outline: 3px solid #ffe259; outline-offset: 2px; }
+.export { background: linear-gradient(90deg, #ff7e5f, #ff2e88); color: #fff; font-size: 17px; padding: 13px; }
+.export:hover { filter: brightness(1.12); }
+#status { margin: 0; color: #8fe3b0; font-size: 13px; min-height: 18px; }
+.stage { display: flex; flex-direction: column; gap: 10px; align-items: center; position: sticky; top: 22px; }
+#cover { width: min(72vh, 62vw); height: auto; aspect-ratio: attr(width) / attr(height); box-shadow: 0 12px 44px rgba(0, 0, 0, 0.55); border-radius: 4px; cursor: crosshair; touch-action: none; }
+.stage-hint { margin: 0; color: #a98fc4; font-size: 12px; }
+body.shot-cover .controls, body.shot-cover .stage-hint { display: none; }
+body.shot-cover .app { padding: 0; display: block; }
+body.shot-cover .stage { position: static; }
+body.shot-cover #cover { width: 100vw; height: 100vh; object-fit: contain; box-shadow: none; border-radius: 0; background: #12081f; }
+@media (max-width: 900px) { .app { flex-direction: column; } .controls { width: 100%; } }
